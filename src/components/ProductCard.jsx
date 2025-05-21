@@ -11,8 +11,9 @@ import {
 export function EcommerceCard() {
   const navigate = useNavigate();
 
-  const handleImageClick = async () => {
+  const handleClickImage = async () => {
     try {
+      window.scrollTo(0, 0); //hace que la pag productInfo inicie desde el navbar
       navigate("/productInfo");
     } catch (error) {
       console.log(error);
@@ -25,7 +26,7 @@ export function EcommerceCard() {
           src="https://images.unsplash.com/photo-1629367494173-c78a56567877?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=927&q=80"
           alt="card-image"
           className="h-full w-full object-cover cursor-pointer hover:opacity-80 transition-opacity"
-          onClick={handleImageClick}
+          onClick={handleClickImage}
         />
       </CardHeader>
       <CardBody>
