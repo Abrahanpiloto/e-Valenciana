@@ -1,4 +1,5 @@
 import React from "react";
+import { auth } from "../firebase/firebaseConfig";
 import {
   Navbar,
   MobileNav,
@@ -7,11 +8,34 @@ import {
   IconButton,
   Input,
 } from "@material-tailwind/react";
-import { useState } from "react";
+
 import SearchResults from "./SearchResults";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { signOut } from "firebase/auth";
 
 export function NavbarWithSearch() {
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
+    });
+
+    // Cleanup listener
+    return () => unsubscribe();
+  }, []);
+
+  const handleUserClick = () => {
+    if (user) {
+      navigate("/user-dashboard");
+    } else {
+      navigate("/login");
+    }
+  };
   const [openNav, setOpenNav] = React.useState(false);
 
   const [searchTerm, setSearchTerm] = useState(""); // Lo que se escribe
@@ -27,6 +51,19 @@ export function NavbarWithSearch() {
     setTimeout(() => {
       setSearchTerm("");
     }, 200);
+  };
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      toast.success("Sesión cerrada correctamente", {
+        position: "top-right",
+        autoClose: 3000,
+      });
+      navigate("/"); // Redirige al home
+    } catch (error) {
+      toast.error("Error al cerrar sesión");
+    }
   };
 
   const navList = (
@@ -77,6 +114,7 @@ export function NavbarWithSearch() {
         variant="small"
         color="blue-gray"
         className="flex items-center gap-x-2 p-1 font-medium text-white hover:text-yellow-600 transition-colors"
+        onClick={handleUserClick}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -90,10 +128,14 @@ export function NavbarWithSearch() {
             clip-rule="evenodd"
           />
         </svg>
+        <span className="cursor-pointer">
+          {user ? "Mi Perfil" : "Usuario"}{" "}
+          {/* Cambiamos el texto según el estado */}
+        </span>
 
-        <Link to="/login" className="flex items-center hover:text-yellow-600">
+        {/* <Link to="/login" className="flex items-center hover:text-yellow-600">
           Usuario
-        </Link>
+        </Link> */}
       </Typography>
       <Typography
         as="li"
@@ -162,9 +204,15 @@ export function NavbarWithSearch() {
           />
         </svg>
 
-        <a href="#" className="flex items-center hover:text-yellow-600">
+        {/* <a href="#" className="flex items-center hover:text-yellow-600">
           Salir
-        </a>
+        </a> */}
+        <button
+          onClick={handleLogout}
+          className="flex items-center hover:text-yellow-600 cursor-pointer"
+        >
+          {user ? "Cerrar Sesión" : ""}
+        </button>
       </Typography>
     </ul>
   );

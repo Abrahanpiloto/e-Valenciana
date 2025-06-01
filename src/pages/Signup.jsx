@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Card,
   Input,
@@ -9,6 +9,8 @@ import {
 } from "@material-tailwind/react";
 import { registerUser } from "../firebase/firebaseConfig";
 import { useForm } from "react-hook-form";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const inputStyles = {
   height: "25px",
@@ -16,6 +18,7 @@ const inputStyles = {
 };
 
 export default function SimpleRegistrationForm() {
+  const navigate = useNavigate();
   // Estados para los datos del formulario, usando la libreria de validaciones useForm:
 
   const {
@@ -35,7 +38,7 @@ export default function SimpleRegistrationForm() {
   });
 
   const [error, setError] = useState("");
-
+  const notify = () => toast("Wow so easy !");
   // Funcion para manejar el envio del formulario:
   const onSubmit = async (data) => {
     try {
@@ -45,11 +48,24 @@ export default function SimpleRegistrationForm() {
         reset();
         // Limpia cualquier error previo:
         setError("");
+        toast.success("¡Usuario registrado exitosamente!", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          onClose: () => navigate("/"),
+        });
         console.log("Usuario registrado exitosamente:", userCredential.user);
       }
 
       // Agregar la lógica de redirección después del registro exitoso:
     } catch (error) {
+      toast.error("Error al registrar usuario", {
+        position: "top-right",
+        autoClose: 3000,
+      });
       // Manejo específico de errores de Firebase
       switch (error.code) {
         case "auth/email-already-in-use":
@@ -72,6 +88,7 @@ export default function SimpleRegistrationForm() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <ToastContainer />
       <Card color="white" shadow={true} className="p-6 lg:w-[440px]">
         <Typography variant="h5" color="blue-gray">
           Registro
