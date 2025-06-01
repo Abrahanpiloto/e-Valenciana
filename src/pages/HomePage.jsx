@@ -7,7 +7,7 @@ import ContainerTestimonial from "../components/ContainerTestimonial";
 
 const HomePage = () => {
   return (
-    <div className="bg-gray-100">
+    <div className="bg-[#FEFAF0] min-h-screen">
       <Layout>
         <Carousel />
         <Category />

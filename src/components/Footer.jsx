@@ -9,7 +9,7 @@ const LINKS = [
   },
   {
     title: "Company",
-    items: ["About us", "Careers", "Press", "News"],
+    items: ["Nosotros", "Careers", "Press", "News"],
   },
   {
     title: "Resource",
