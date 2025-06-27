@@ -4,8 +4,8 @@ export function CarouselCustomNavigation() {
   return (
     <Carousel
       className="h-[300px] md:h-[400px] lg:h-[450px]"
-      autoplay={false}
-      autoplayDelay={12000}
+      autoplay={true}
+      autoplayDelay={6000}
       loop={true}
       navigation={({ setActiveIndex, activeIndex, length }) => (
         <div className="absolute bottom-4 left-2/4 z-50 flex -translate-x-2/4 gap-2">

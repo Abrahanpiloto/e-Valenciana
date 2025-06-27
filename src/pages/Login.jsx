@@ -170,8 +170,11 @@ export default function SimpleRegistrationForm() {
           </Button>
           <Typography color="gray" className="mt-4 text-center font-normal">
             No estoy registrado{" "}
-            <Link to="/signup" className="font-medium text-gray-900">
-              Registrarme
+            <Link
+              to="/signup"
+              className="font-bold text-blue-500 hover:text-blue-gray-900"
+            >
+              registrarme
             </Link>
           </Typography>
         </form>

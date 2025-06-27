@@ -68,6 +68,7 @@ export function NavbarWithSearch() {
 
   const navList = (
     <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+      {/* ----- INICIO ------ */}
       <Typography
         as="li"
         variant="small"
@@ -88,7 +89,7 @@ export function NavbarWithSearch() {
           Inicio
         </Link>
       </Typography>
-
+      {/* ----- ¿QUIENES SOMOS? ----- */}
       <Typography
         as="li"
         variant="small"
@@ -104,12 +105,15 @@ export function NavbarWithSearch() {
           <path d="M5.566 4.657A4.505 4.505 0 0 1 6.75 4.5h10.5c.41 0 .806.055 1.183.157A3 3 0 0 0 15.75 3h-7.5a3 3 0 0 0-2.684 1.657ZM2.25 12a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3v-6ZM5.25 7.5c-.41 0-.806.055-1.184.157A3 3 0 0 1 6.75 6h10.5a3 3 0 0 1 2.683 1.657A4.505 4.505 0 0 0 18.75 7.5H5.25Z" />
         </svg>
 
-        <a href="#" className="flex items-center hover:text-yellow-600">
-          Productos
-        </a>
+        <Link
+          to="/aboutus"
+          className="flex items-center hover:text-yellow-600 cursor-pointer"
+        >
+          ¿Quiénes somos?
+        </Link>
       </Typography>
-
-      <Typography
+      {/* ----- USUARIO ------ */}
+      {/* <Typography
         as="li"
         variant="small"
         color="blue-gray"
@@ -129,15 +133,14 @@ export function NavbarWithSearch() {
           />
         </svg>
         <span className="cursor-pointer">
-          {user ? "Mi Perfil" : "Usuario"}{" "}
-          {/* Cambiamos el texto según el estado */}
+          {user ? "Mi Perfil" : "Usuario"} Cambiamos el texto según el estado
         </span>
 
-        {/* <Link to="/login" className="flex items-center hover:text-yellow-600">
+        <Link to="/login" className="flex items-center hover:text-yellow-600">
           Usuario
-        </Link> */}
-      </Typography>
-      <Typography
+        </Link>
+      </Typography> */}
+      {/* <Typography
         as="li"
         variant="small"
         color="blue-gray"
@@ -162,7 +165,7 @@ export function NavbarWithSearch() {
         >
           Admin
         </Link>
-      </Typography>
+      </Typography> */}
       <Typography
         as="li"
         variant="small"
@@ -185,7 +188,7 @@ export function NavbarWithSearch() {
           Cesta (0)
         </Link>
       </Typography>
-      <Typography
+      {/* <Typography
         as="li"
         variant="small"
         color="blue-gray"
@@ -198,22 +201,22 @@ export function NavbarWithSearch() {
           class="size-6"
         >
           <path
-            fill-rule="evenodd"
+            fillRule="evenodd"
             d="M7.5 3.75A1.5 1.5 0 0 0 6 5.25v13.5a1.5 1.5 0 0 0 1.5 1.5h6a1.5 1.5 0 0 0 1.5-1.5V15a.75.75 0 0 1 1.5 0v3.75a3 3 0 0 1-3 3h-6a3 3 0 0 1-3-3V5.25a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3V9A.75.75 0 0 1 15 9V5.25a1.5 1.5 0 0 0-1.5-1.5h-6Zm10.72 4.72a.75.75 0 0 1 1.06 0l3 3a.75.75 0 0 1 0 1.06l-3 3a.75.75 0 1 1-1.06-1.06l1.72-1.72H9a.75.75 0 0 1 0-1.5h10.94l-1.72-1.72a.75.75 0 0 1 0-1.06Z"
-            clip-rule="evenodd"
+            clipRule="evenodd"
           />
         </svg>
 
-        {/* <a href="#" className="flex items-center hover:text-yellow-600">
+        <a href="#" className="flex items-center hover:text-yellow-600">
           Salir
-        </a> */}
+        </a>
         <button
           onClick={handleLogout}
           className="flex items-center hover:text-yellow-600 cursor-pointer"
         >
           {user ? "Cerrar Sesión" : ""}
         </button>
-      </Typography>
+      </Typography> */}
     </ul>
   );
 
@@ -225,7 +228,7 @@ export function NavbarWithSearch() {
           to="/"
           className="mr-4 cursor-pointer py-1.5 font-bold text-yellow-600"
         >
-          e - Valenciana
+          Valenciana
         </Typography>
         <div className="hidden lg:block">{navList}</div>
         <div className="hidden items-center gap-x-2 lg:flex">
@@ -262,8 +265,8 @@ export function NavbarWithSearch() {
                   d="M13 13.5L9 9.5M10.3333 6.16667C10.3333 6.7795 10.2126 7.38634 9.97811 7.95252C9.74358 8.51871 9.39984 9.03316 8.9665 9.4665C8.53316 9.89984 8.01871 10.2436 7.45252 10.4781C6.88634 10.7126 6.2795 10.8333 5.66667 10.8333C5.05383 10.8333 4.447 10.7126 3.88081 10.4781C3.31462 10.2436 2.80018 9.89984 2.36683 9.4665C1.93349 9.03316 1.58975 8.51871 1.35523 7.95252C1.12071 7.38634 1 6.7795 1 6.16667C1 4.92899 1.49167 3.742 2.36683 2.86683C3.242 1.99167 4.42899 1.5 5.66667 1.5C6.90434 1.5 8.09133 1.99167 8.9665 2.86683C9.84167 3.742 10.3333 4.92899 10.3333 6.16667Z"
                   stroke="#fff"
                   stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             </div>
@@ -347,8 +350,8 @@ export function NavbarWithSearch() {
                     d="M13 13.5L9 9.5M10.3333 6.16667C10.3333 6.7795 10.2126 7.38634 9.97811 7.95252C9.74358 8.51871 9.39984 9.03316 8.9665 9.4665C8.53316 9.89984 8.01871 10.2436 7.45252 10.4781C6.88634 10.7126 6.2795 10.8333 5.66667 10.8333C5.05383 10.8333 4.447 10.7126 3.88081 10.4781C3.31462 10.2436 2.80018 9.89984 2.36683 9.4665C1.93349 9.03316 1.58975 8.51871 1.35523 7.95252C1.12071 7.38634 1 6.7795 1 6.16667C1 4.92899 1.49167 3.742 2.36683 2.86683C3.242 1.99167 4.42899 1.5 5.66667 1.5C6.90434 1.5 8.09133 1.99167 8.9665 2.86683C9.84167 3.742 10.3333 4.92899 10.3333 6.16667Z"
                     stroke="#ffffff"
                     stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                 </svg>
               </div>

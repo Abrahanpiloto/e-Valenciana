@@ -94,7 +94,8 @@ export default function SimpleRegistrationForm() {
           Registro
         </Typography>
         <Typography color="gray" className="mt-1 font-normal">
-          ¡Un placer conocerte! Por favor, introduce tus datos para registrarte.
+          ¡Hola, es un placer conocerte! Por favor, introduce tus datos para
+          registrarte.
         </Typography>
         <form
           className="mt-4 mb-2 w-80 max-w-screen-lg sm:w-96"
@@ -268,7 +269,10 @@ export default function SimpleRegistrationForm() {
           </Button>
           <Typography color="gray" className="mt-4 text-center font-normal">
             ¿Ya tienes una cuenta?{" "}
-            <Link to="/login" className="font-medium text-gray-900">
+            <Link
+              to="/login"
+              className="font-bold text-blue-500 hover:text-gray-900"
+            >
               Iniciar Sesión
             </Link>
           </Typography>
