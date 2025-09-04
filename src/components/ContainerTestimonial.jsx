@@ -14,7 +14,6 @@ const ContainerTestimonial = () => {
         <Testimonial />
         <Testimonial />
         <Testimonial />
-        <Testimonial />
       </div>
     </div>
   );

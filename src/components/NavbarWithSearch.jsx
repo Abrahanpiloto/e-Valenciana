@@ -1,5 +1,5 @@
 import React from "react";
-import { auth } from "../firebase/firebaseConfig";
+
 import {
   Navbar,
   MobileNav,
@@ -12,22 +12,20 @@ import {
 import SearchResults from "./SearchResults";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { onAuthStateChanged } from "firebase/auth";
+
 import { useNavigate } from "react-router-dom";
-import { signOut } from "firebase/auth";
 
 export function NavbarWithSearch() {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user);
-    });
+  // useEffect(() => {
+  //   const unsubscribe = onAuthStateChanged(auth, (user) => {
+  //     setUser(user);
+  //   });
 
-    // Cleanup listener
-    return () => unsubscribe();
-  }, []);
+  //   return () => unsubscribe();
+  // }, []);
 
   const handleUserClick = () => {
     if (user) {
