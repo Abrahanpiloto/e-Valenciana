@@ -8,6 +8,7 @@ export interface ProductVariant extends Struct.ComponentSchema {
   };
   attributes: {
     Color: Schema.Attribute.String & Schema.Attribute.Required;
+    marca: Schema.Attribute.String;
     size: Schema.Attribute.String & Schema.Attribute.Required;
     sku: Schema.Attribute.String;
     Stock: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;

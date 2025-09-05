@@ -20,6 +20,9 @@
     },
     "sku": {
       "type": "string"
+    },
+    "marca": {
+      "type": "string"
     }
   },
   "config": {}
