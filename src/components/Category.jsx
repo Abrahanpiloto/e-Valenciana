@@ -39,7 +39,10 @@ const category = [
 const Category = () => {
   return (
     <div>
-      <div className="flex flex-col mt-4">
+      <div className="flex flex-col mt-8 justify-center items-center">
+        <h1 className="flex justify-center pb-8 text-2xl font-bold">
+          Categorias
+        </h1>
         {/* main 1 */}
         <div className="flex overflow-x-scroll lg:overflow-x-hidden lg:justify-center  hide-scroll-bar">
           {/* main 2  */}
